@@ -18,18 +18,20 @@
 
 **Formato de los datos:** Imágenes.
 
-**Tamaño del dataset:** 7,896 imágenes.
+**Tamaño del dataset:**  31, 575 imágenes.
 
-- Watermark: 3,128 train + 825 test
-- Sin watermark: 3,120 train + 823 test
+- Watermark: 10,008 train + 2,502 validation  + 3,299 test
+- Sin watermark: 9,982 train + 2,495 validation  + 3,289 test
 
 **Variables o características:** El dataset contiene imágenes con y sin marcas de agua, etiquetadas adecuadamente para su uso en tareas de clasificación.
 
 **Valores faltantes:** Ninguno.
 
 **Distribución de las clases:**
-- Watermark: 3,953 imágenes (50.06%)
-- Sin watermark: 3,943 imágenes (49.94%)
+- Watermark: 15,809 imágenes (50.06%)
+- -- Train (63.30%) + Validation (15.82%) + Test (20.86%)
+- Sin watermark: 15,766 imágenes (49.94%)
+- -- Train (63.31%) + Validation (15.82%) + Test (20.86%)
 
 **Preprocesamiento aplicado:** Se aplicó un preprocesamiento básico que incluye redimensionamiento a 100x100 píxeles y escalamiento de los valores de píxeles para que estén entre 0 y 1.
 
@@ -39,7 +41,7 @@
 - NoComercial (NC): Se permite copiar, distribuir, exhibir y ejecutar el trabajo, así como hacer y distribuir trabajos derivados, pero no para un fin comercial sin permiso previo del autor.
 - CompartirIgual (SA): Se permite hacer y distribuir trabajos derivados, pero solo bajo una licencia idéntica a la que regula el trabajo original (es decir, licencia CC BY-NC-SA 4.0).
 
-**URL de descarga:** [Enlace de descarga](https://drive.google.com/drive/folders/10Z1rE54GZyoXj8KvX3iPGtYJs5MCaVYt?usp=drive_link).
+**URL de descarga:** [Enlace de descarga](https://drive.google.com/drive/folders/1DMZaVaJ7cLMuh9MQibmfjir5RspuMbVq?usp=sharing).
 
 **Ejemplos de uso:** Estos datos pueden ser utilizados para entrenar modelos de aprendizaje automático para detectar y eliminar marcas de agua en imágenes.
 
@@ -47,5 +49,8 @@
 
 **Referencias:**
 - [Watermark Removal using Convolutional Autoencoder](https://www.kaggle.com/code/ankit8467/watermark-removal-using-convolutional-autoencoder)
-- [Watermark Removal using Convolutional Autoencoder](https://www.kaggle.com/code/therealcyberlord/watermark-removal-using-convolutional-autoencoder)
 - [Cat Eyes](https://www.kaggle.com/code/mpwolke/cat-eyes)
+#### Papers utilizados en la implementación:
+- [Large-Scale Visible Watermark Detection and Removal with Deep Convolutional Networks](https://link.springer.com/chapter/10.1007/978-3-030-03338-5_3)
+- [Focal Loss for Dense Object Detection](https://openaccess.thecvf.com/content_ICCV_2017/papers/Lin_Focal_Loss_for_ICCV_2017_paper.pdf)
+- [Image Classification Based On CNN: A Survey](https://d1wqtxts1xzle7.cloudfront.net/90135273/p2-libre.pdf?1661255798=&response-content-disposition=inline%3B+filename%3DImage_Classification_Based_On_CNN_A_Surv.pdf&Expires=1713721022&Signature=NMCdEZzBOcx8flTi9OSuaUhDZV68yQGmlqnLRsYBB0P~1FoWClcLntffqWDrbKJiGMTxyxErKjDgf~iXbeYVaecMQxeRCWFXHlnAIsgvABD1ZKGXYb2v2c~2-UVe3sJr-t148s~chjp6Cvhvxdn-GXwm6ZnDcbsbqgXsHGOZVhvD0aLvcLX28zJlhIfChzViS1OG1~VGfxdxMrt3nzCKK~MHWP8yOHDuAX40xeFWjcK~HKRe2y2Yt15Ka4C~WzhQFHOOHcfiVbUmVUcejmP~22j~CNrw3T0BZKef9pVfT8BRby~WV3q4pkdBKjaZ~l-~2PmZYfNWAsy7RTycJqL6aA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA)
