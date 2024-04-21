@@ -52,6 +52,8 @@
 - [Large-Scale Visible Watermark Detection and Removal with Deep Convolutional Networks](https://link.springer.com/chapter/10.1007/978-3-030-03338-5_3)
 - [Focal Loss for Dense Object Detection](https://openaccess.thecvf.com/content_ICCV_2017/papers/Lin_Focal_Loss_for_ICCV_2017_paper.pdf)
 - [Image Classification Based On CNN: A Survey](https://d1wqtxts1xzle7.cloudfront.net/90135273/p2-libre.pdf?1661255798=&response-content-disposition=inline%3B+filename%3DImage_Classification_Based_On_CNN_A_Surv.pdf&Expires=1713721022&Signature=NMCdEZzBOcx8flTi9OSuaUhDZV68yQGmlqnLRsYBB0P~1FoWClcLntffqWDrbKJiGMTxyxErKjDgf~iXbeYVaecMQxeRCWFXHlnAIsgvABD1ZKGXYb2v2c~2-UVe3sJr-t148s~chjp6Cvhvxdn-GXwm6ZnDcbsbqgXsHGOZVhvD0aLvcLX28zJlhIfChzViS1OG1~VGfxdxMrt3nzCKK~MHWP8yOHDuAX40xeFWjcK~HKRe2y2Yt15Ka4C~WzhQFHOOHcfiVbUmVUcejmP~22j~CNrw3T0BZKef9pVfT8BRby~WV3q4pkdBKjaZ~l-~2PmZYfNWAsy7RTycJqL6aA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA)
+- [Binary cross entropy with deep learning technique for
+Image classification](https://www.researchgate.net/profile/Vamsidhar-Yendapalli/publication/344854379_Binary_cross_entropy_with_deep_learning_technique_for_Image_classification/links/5f93eed692851c14bce1ac68/Binary-cross-entropy-with-deep-learning-technique-for-Image-classification.pdf)
 
 ---
 
