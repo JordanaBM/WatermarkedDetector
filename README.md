@@ -121,7 +121,7 @@ Las CNN están compuestas por tres tipos de capas: la capa de convolución, la c
 
 ![Arquitectura CNN](https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/4ea67ae3-d24d-4f06-8fed-127991864c11)
 
-### Diseño del primer modelo
+### Diseño del primer modelo `watermarkscnn.py`
 
 1. **Capa Convolucional (Conv2D):**
    - Se define una capa convolucional con 32 filtros de tamaño 3x3 y función de activación ReLU.
