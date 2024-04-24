@@ -116,3 +116,47 @@ print("False Negatives (FNs) - not-watermarked predicted as watermarked:", FNs)
 print("True Positive Rate (TPR) - not-watermarked:", TPR)
 print("False Positive Rate (FPR) - watermarked:", FPR)
 print("Precision:", Precision)
+
+# Descargar la imagen de Internet
+
+#Watermark
+url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxRneiMVZUZHGjiDUP_x0Pudb0Lik3w8LlWWGwKI_-nw&s'
+#url = 'https://live.staticflickr.com/7306/12683532764_96a96bff3b_h.jpg'
+#url = 'https://www.paintshoppro.com/static/psp/images/pages/seo/tips/basics/watermark-photos/header.jpg'
+#url = 'https://media.gettyimages.com/id/82662318/es/foto/2-djs-mixing-music-on-the-decks.jpg?s=612x612&w=gi&k=20&c=coZhxdqj7gTp7egVoyHbepoXaUkTDP8oTRhnEvmF8kI='
+#url = 'https://imgv3.fotor.com/images/blog-richtext-image/watermark-the-milk-poster.jpg'
+
+#No watermark
+#url = 'https://img.freepik.com/foto-gratis/paisaje-forestal_71767-127.jpg'
+#url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTjH-4BwXasWgSp0whlwPpJM_NHGD4koOr0IjvnMQ7iQ&s'
+#url = 'https://www.lightroompresets.com/cdn/shop/articles/watermark_images_1024x.jpg?v=1659217598'
+#url = 'https://www.shutterstock.com/image-photo/charismatic-disc-jockey-turntable-dj-600nw-415922566.jpg'
+#url = 'https://img.freepik.com/foto-gratis/primer-disparo-flor-morada_181624-25863.jpg'
+
+response = requests.get(url)
+with open('watermark_image.jpg', 'wb') as f:
+    f.write(response.content)
+
+# Procesar la imagen
+imagen = Image.open('watermark_image.jpg')
+target_size = (100, 100)
+imagen_redimensionada = imagen.resize(target_size)
+imagen_array = np.array(imagen_redimensionada) / 255.0  # Normalizar los valores de píxeles
+imagen_final = np.expand_dims(imagen_array, axis=0)  # Agregar dimensión adicional para el batch
+
+# Cargar el modelo pre-entrenado
+model = load_model('modelo_cnn_watermarks1.h5')
+
+# Realizar la predicción
+prediccion = model.predict(imagen_final)
+predict_class = (prediccion > 0.5).astype("int32")
+
+# Imprimir la predicción con la imagen
+plt.imshow(imagen_redimensionada)
+
+if predict_class [0][0] == 1:
+    plt.title('La imagen contiene marca de agua')
+else:
+    plt.title('La imagen no contiene marca de agua')
+plt.axis('off')
+plt.show()
