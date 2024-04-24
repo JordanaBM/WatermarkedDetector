@@ -50,7 +50,7 @@
 **Referencias:**
 - [Watermark Removal using Convolutional Autoencoder](https://www.kaggle.com/code/ankit8467/watermark-removal-using-convolutional-autoencoder)
 - [Cat Eyes](https://www.kaggle.com/code/mpwolke/cat-eyes)
-#### Papers utilizados en la implementación:
+## Papers utilizados en la implementación:
 - [Large-Scale Visible Watermark Detection and Removal with Deep Convolutional Networks](https://link.springer.com/chapter/10.1007/978-3-030-03338-5_3)
 - [Focal Loss for Dense Object Detection](https://openaccess.thecvf.com/content_ICCV_2017/papers/Lin_Focal_Loss_for_ICCV_2017_paper.pdf)
 - [Image Classification Based On CNN: A Survey](https://www.researchgate.net/publication/355800126_Image_Classification_Based_On_CNN_A_Survey)
@@ -162,13 +162,33 @@ Las CNN están compuestas por tres tipos de capas: la capa de convolución, la c
    - La capa de salida tiene una sola neurona con una función de activación sigmoide. Esta configuración es típica para problemas de clasificación binaria, donde la neurona de salida representa la probabilidad de que la imagen contenga o no un watermark. La función sigmoide comprime la salida a un rango entre 0 y 1, que se interpreta como la probabilidad de pertenecer a la clase positiva (con watermark).
 
 
-
-
-
 ---
 
 # 5. Resultados del algoritmo
 
+En la detección de watermarks, generalmente se trata de un problema de clasificación binaria, donde se busca determinar si una imagen contiene o no un watermark. La función `binary_crossentropy` es adecuada para este tipo de problemas, ya que mide la discrepancia entre las probabilidades predichas por el modelo y las etiquetas reales, siendo más efectiva en problemas de clasificación binaria que otras funciones de pérdida como la `categorical_crossentropy`.
+
+La `binary_crossentropy` es una función de pérdida comúnmente utilizada en problemas de clasificación binaria en redes neuronales. Esta función de pérdida mide la diferencia entre las distribuciones de probabilidad predichas por el modelo y las distribuciones reales de los datos.
+
+## Training
+
+### Accurancy 59%
+<img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/fa5267ab-156b-4d3e-857a-596da8f6733a" width="50%">
+
+### Loss 65%
+<img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/2a466661-cc3f-4443-95b7-2ae2092c13b4" width="50%">
+
+
+## Testing
+
+### Matriz de confusión
+
+<img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/77541790-e127-4a8c-8628-31cd6d659eb0" width="50%">
+
+### Métricas
+<img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/7aeddada-a8ab-40ff-b8b8-f40f84a15795" width="50%">
+
+**El modelo de detección de watermarks logró identificar correctamente 129 imágenes sin watermark (True Positives) y 40 imágenes con watermark (True Negatives), lo que representa una tasa de acierto del 81.13% y del 69.92%, respectivamente. Sin embargo, también se observaron 93 casos donde el modelo clasificó incorrectamente imágenes con watermark como si no lo tuvieran (False Positives), y 30 casos donde se predijo incorrectamente la presencia de watermark en imágenes que no lo tenían (False Negatives). Esto resultó en una precisión del 58.11%, que indica la proporción de imágenes correctamente identificadas como sin watermark con respecto a todas las imágenes identificadas como tal por el modelo.**
 
 ---
 
