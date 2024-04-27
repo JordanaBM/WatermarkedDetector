@@ -172,7 +172,7 @@ La `binary_crossentropy` es una función de pérdida comúnmente utilizada en pr
 
 ## Training
 
-### Accurancy 59%
+### Accuracy 59%
 <img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/fa5267ab-156b-4d3e-857a-596da8f6733a" width="50%">
 
 ### Loss 65%
@@ -190,9 +190,28 @@ La `binary_crossentropy` es una función de pérdida comúnmente utilizada en pr
 
 **El modelo de detección de watermarks logró identificar correctamente 129 imágenes sin watermark (True Positives) y 40 imágenes con watermark (True Negatives), lo que representa una tasa de acierto del 81.13% y del 69.92%, respectivamente. Sin embargo, también se observaron 93 casos donde el modelo clasificó incorrectamente imágenes con watermark como si no lo tuvieran (False Positives), y 30 casos donde se predijo incorrectamente la presencia de watermark en imágenes que no lo tenían (False Negatives). Esto resultó en una precisión del 58.11%, que indica la proporción de imágenes correctamente identificadas como sin watermark con respecto a todas las imágenes identificadas como tal por el modelo.**
 
+
+### Mejora en el umbral de predicción manual
+
+Durante la impresión del número de predicción, se constató que los valores se encontraban notablemente dispersos hacia el lado izquierdo. En consecuencia, la media no alcanzaba el valor de 0.5, y se observó que muchas imágenes con marca de agua tenían una predicción inferior a este umbral. Por ende, se determinó que cualquier predicción superior a 0.40 indicaría la presencia de marca de agua. Tras efectuar este ajuste manual, se obtuvieron los siguientes resultados.
+
+<img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/531a1dd5-d21d-421f-8fab-c2f34421febf" width="50%">
+
+<img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/189c6ef8-60ba-46ce-8b08-1e0ba8372997" width="50%">
+
+**Con este simple cambio en el test, la accuracy pasó a ser del 69% **
 ---
 
 # 6. Cambios al algoritmo
+
+1. **Mayor complejidad del modelo:** El nuevo modelo contiene una red convolucional más profunda y compleja, con capas convolucionales adicionales (64, 128, 256, 512 filtros) lo que puede permitir al modelo aprender características más abstractas y complejas de las imágenes.
+
+2. **Uso de optimizador Adam:** Aunque el primer modelo ya contenía el optimizador de Adam, este por defecto, tiene un learning rate de 0.001, en el modelo optimizado contamos ahora con una tasa de aprendizaje reducida de 0.0005, que suele ser más efectiva para problemas de aprendizaje profundo y puede ayudar al modelo a converger más rápido y obtener mejores resultados.
+
+3. **Cambio en el procesamiento de imágenes:** Se eliminaron las funciones de zoom, así como los rangos de desplazamiento de ancho y alto (width y height shift range), debido a que al aplicar zoom a algunas imágenes se eliminaba la marca de agua, y al modificar el ancho y alto con rotaciones, en ocasiones la imagen quedaba deformada, lo que dificultaba percibir la marca de agua.
+
+**Justificación:** La incorporación de capas convolucionales adicionales en el modelo de detección de watermarks resulta fundamental para capturar características más complejas y específicas de las imágenes, como los patrones de textura, formas y detalles finos característicos de los watermarks. Este enfoque permite que el modelo pueda identificar con mayor precisión la presencia de watermarks en las imágenes. Asimismo, un modelo más profundo con más capas convolucionales tiene la capacidad de generalizar mejor, lo que implica que puede adaptarse de manera más efectiva a nuevas imágenes y escenarios. Esta capacidad de generalización se refleja en un mejor rendimiento en datos de prueba no vistos, lo que evidencia la eficacia y robustez del modelo en la detección de watermarks en diversas situaciones y condiciones, por otra parte, utilizar una tasa de aprendizaje reducida de 0.0005 en el optimizador Adam en lugar del valor por defecto de 0.001 mejora la eficacia del modelo en problemas de aprendizaje profundo. Esta tasa más baja permite ajustar los pesos de la red de manera más precisa y gradual, evitando que el modelo "salte" sobre mínimos locales y permitiendo una convergencia más rápida hacia una solución óptima. 
+
 
 ---
 
