@@ -199,7 +199,7 @@ Durante la impresión del número de predicción, se constató que los valores s
 
 <img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/189c6ef8-60ba-46ce-8b08-1e0ba8372997" width="50%">
 
-**Con este simple cambio en el test, la accuracy pasó a ser del 69% **
+**Con este simple cambio en el test, la accuracy pasó a ser del 69%**
 ---
 
 # 6. Cambios al algoritmo
@@ -210,6 +210,8 @@ Durante la impresión del número de predicción, se constató que los valores s
 
 3. **Cambio en el procesamiento de imágenes:** Se eliminaron las funciones de zoom, así como los rangos de desplazamiento de ancho y alto (width y height shift range), debido a que al aplicar zoom a algunas imágenes se eliminaba la marca de agua, y al modificar el ancho y alto con rotaciones, en ocasiones la imagen quedaba deformada, lo que dificultaba percibir la marca de agua.
 
+4. **Aumento de número de épocas** Se aumentó a 20 epoch, esto con la finalidad de tener una mayor convergencia, haciendo que tenga una precisión más alta porque posee más tiempo para aprender patrones más compleja. Además, un aumento en el número de épocas puede actuar como una forma de regularización, ayudando al modelo a generalizar mejor a datos nuevos y no vistos. 
+
 **Justificación:** La incorporación de capas convolucionales adicionales en el modelo de detección de watermarks resulta fundamental para capturar características más complejas y específicas de las imágenes, como los patrones de textura, formas y detalles finos característicos de los watermarks. Este enfoque permite que el modelo pueda identificar con mayor precisión la presencia de watermarks en las imágenes. Asimismo, un modelo más profundo con más capas convolucionales tiene la capacidad de generalizar mejor, lo que implica que puede adaptarse de manera más efectiva a nuevas imágenes y escenarios. Esta capacidad de generalización se refleja en un mejor rendimiento en datos de prueba no vistos, lo que evidencia la eficacia y robustez del modelo en la detección de watermarks en diversas situaciones y condiciones, por otra parte, utilizar una tasa de aprendizaje reducida de 0.0005 en el optimizador Adam en lugar del valor por defecto de 0.001 mejora la eficacia del modelo en problemas de aprendizaje profundo. Esta tasa más baja permite ajustar los pesos de la red de manera más precisa y gradual, evitando que el modelo "salte" sobre mínimos locales y permitiendo una convergencia más rápida hacia una solución óptima. 
 
 
@@ -217,10 +219,37 @@ Durante la impresión del número de predicción, se constató que los valores s
 
 # 7. Resultados del segundo algoritmo
 
+### Accuracy 76%
+<img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/25c63ced-d0a6-456d-8b2d-d1822e8b2d6f" width="50%">
+
+### Loss 47%
+<img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/20a666a6-e8d5-4602-84a0-5e8f55c98bb8" width="50%">
+
+
+## Testing
+
+### Matriz de confusión
+
+<img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/b91b5b11-fc38-41c1-ac50-9932e570cf6f" width="50%">
+
+
+### Métricas
+<img src="https://github.com/JordanaBM/WatermarkedDetector/assets/69861226/f8326eb8-5305-41c8-b162-886b32708843" width="50%">
+
+Como se puede observar, incluso cuando la predicción es mayor a 0.5 para imágenes que sí contienen marcas de agua, el modelo mejorado en la fase de prueba obtiene un puntaje de precisión mayor, siendo solo un 5% menor de lo esperado en la fase de entrenamiento.
+
+
 ---
 
 # 8. Comparación de algoritmos
 
+Ambos códigos implementan modelos de redes neuronales convolucionales (CNN) para la clasificación binaria de imágenes, pero difieren en la complejidad y configuración de las capas.
 
+El modelo optimizado utiliza una arquitectura de red más profunda y compleja, lo que le permite aprender representaciones más abstractas y complejas de las imágenes. Las capas convolucionales con un mayor número de filtros (64, 128, 256 y 512) pueden detectar características más sofisticadas en las imágenes, lo que puede ser crucial para identificar marcas de agua sutiles o complejas. En contraste, el modelo original contaba con solo 3 capas convolucionales de 32, 64 y 128 filtros, lo que limitaba su capacidad para capturar detalles finos.
 
+Ambos modelos mantienen una capa densa con 512 neuronas antes de la capa de salida. Sin embargo, en el modelo optimizado se redujo la tasa de aprendizaje del optimizador Adam, lo que ayudó a mejorar la convergencia del modelo y a evitar que se atasque en mínimos locales durante el entrenamiento.
+
+El entrenamiento del modelo durante 20 épocas en lugar de 10 permitió que el modelo optimizado tuviera suficiente tiempo para aprender patrones complejos en los datos, lo que se reflejó en una mejor precisión en la detección de marcas de agua (76% vs 60%).
+
+En resumen, el modelo mejorado para la detección de marcas de agua utiliza una arquitectura más profunda y compleja, lo que le permite aprender representaciones más sofisticadas de las imágenes y detectar patrones más complejos. Por otro lado, el modelo original era más simple y básico, lo que limitaba su capacidad para la detección de marcas de agua.
 
