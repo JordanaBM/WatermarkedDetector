@@ -83,13 +83,11 @@ Se especifica un tamaño de lote de 32 para ambos generadores.
 
 **Justificación:** Redimensionar las imágenes a una dimensión común facilita el procesamiento para el modelo.
 
-## Función `safe_image_generator`:
+## Función `preprocess_images`:
 
-Se define una función `safe_image_generator` para manejar errores comunes durante la generación de lotes de imágenes.
-Esta función verifica si una imagen es `None` y, en ese caso, la omite.
-También maneja la excepción cuando una imagen está truncada, imprimiendo un mensaje y omitiendo la imagen problemática.
+Se ha creado una función llamada `preprocess_images` que se encarga de procesar imágenes dentro de un directorio específico. Su función principal consiste en eliminar aquellas imágenes que no se pueden abrir correctamente, ya sea por archivos dañados, formatos incorrectos u otros problemas similares.
 
-**Justificación:** La función `safe_image_generator` proporciona un mecanismo para manejar errores comunes que pueden ocurrir durante la generación de lotes de imágenes, como imágenes nulas o truncadas. Al omitir estas imágenes problemáticas, se evita que causen interrupciones en el proceso de entrenamiento del modelo y se asegura que el flujo de datos sea lo más suave posible. 
+**Justificación:** Es útil para limpiar un directorio de imágenes, eliminando aquellas que están corruptas o en un formato no compatible. Esto es importante en tareas de preprocesamiento de datos para modelos de aprendizaje automático, donde tener datos de entrada limpios y válidos es fundamental para el entrenamiento correcto del modelo. Eliminar las imágenes no válidas ayuda a evitar errores durante el procesamiento y el entrenamiento del modelo, lo que puede conducir a resultados más confiables y precisos.
 
 ---
 
