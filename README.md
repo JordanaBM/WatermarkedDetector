@@ -1,4 +1,7 @@
-### - [modelo_cnn_watermarks1.h5](https://drive.google.com/file/d/1id7tUkzsG-WnulKZBM14kHdY9QLOPuI3/view?usp=sharing) No me dejó subirlo a Github porque pesa 76 mb.
+
+##  No me dejó subir los modelos al github porque exceden del peso máximo.
+### - [modelo_cnn_watermarks1.h5](https://drive.google.com/file/d/1id7tUkzsG-WnulKZBM14kHdY9QLOPuI3/view?usp=sharing)
+### - [modelo_optimizado_cnn_watermarks.h5](https://drive.google.com/file/d/1fQvBKw3ySMvYrZjInl5jfiMRY8KMVsuq/view?usp=sharing)
 
 # WatermarkedDetector
 
